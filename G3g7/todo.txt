@@ -1,4 +1,4 @@
-﻿css button all notes
-ToolsView
+﻿css clear style
+save and load legend
 clear
 publish (https)

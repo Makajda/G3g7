@@ -1,8 +1,8 @@
 ﻿@inherits NoteView
 
-<td class="title" style=@(TitleChrom is null ? null : LineCreated + TitleChrom)>@title</td>
-@if (IsShowValue) {
-    <td class="title" style="@TitleChrom">@Octave.Fa</td>
+<td class="title" style=@(Options.IsMonochrome ? LineCreated + GetMonochrome() : null)>@title</td>
+@if (!Options.IsHideValue) {
+    <td class="title" style=@GetMonochrome()>@Octave.Fa</td>
 }
 
 @if (World.IsNext) {

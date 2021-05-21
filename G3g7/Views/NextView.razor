@@ -1,6 +1,6 @@
 ﻿@inherits NoteView
 
-<th colspan="@(IsShowValue ? 2 : 1)" align="center">
+<th colspan="@(Options.IsHideValue ? 1 : 2)" align="center">
     <button class="text-info" style="border-style:none;width:100%;" @onclick="CreateWorld">@title</button>
 </th>
 @if (World.IsNext) {

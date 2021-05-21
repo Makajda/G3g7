@@ -1,8 +1,30 @@
-﻿<h3>ToolsView</h3>
+﻿@inherits NoteView
+
+<button @onclick=@OnHideValue>@(Options.IsHideValue ? "show value" : "hide value")</button>
+<button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=@OnIncValue>value*2</button>
+<button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=@OnDecValue>value:2</button>
+<button @onclick=@OnMonochrome>@(Options.IsMonochrome ? "color on" : "color off")</button>
 
 @code {
-    [Parameter] public World World { get; set; }
-    [Parameter] public Octave Octave { get; set; }
-    [CascadingParameter] public bool IsShowValue { get; set; }
-    [CascadingParameter] public string TitleChrom { get; set; }
+    [Parameter] public EventCallback OptionsChanged { get; set; }
+
+    private async Task OnHideValue() {
+        Options.IsHideValue = !Options.IsHideValue;
+        await OptionsChanged.InvokeAsync();
+    }
+
+    private async Task OnIncValue() {
+        await Octave.Recalc(Octave, 2d);
+        await OptionsChanged.InvokeAsync();
+    }
+
+    private async Task OnDecValue() {
+        await Octave.Recalc(Octave, 0.5d);
+        await OptionsChanged.InvokeAsync();
+    }
+
+    private async Task OnMonochrome() {
+        Options.IsMonochrome = !Options.IsMonochrome;
+        await OptionsChanged.InvokeAsync();
+    }
 }

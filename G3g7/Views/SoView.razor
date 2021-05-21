@@ -1,14 +1,14 @@
 ﻿@inherits NoteView
 
-<td class="title" style="@TitleChrom">@title</td>
-@if (IsShowValue) {
-    <td class="title" style="@TitleChrom">@Octave.So</td>
+<td class="title" style="@GetMonochrome()">@title</td>
+@if (!Options.IsHideValue) {
+    <td class="title" style="@GetMonochrome()">@Octave.So</td>
 }
 
-    @if (World.IsNext) {
-        <DoView World="World.Next" Octave="Octave.NextOne" />
-    }
+@if (World.IsNext) {
+    <DoView World="World.Next" Octave="Octave.NextOne" />
+}
 
-    @code {
-private string title = "So";
-    }
+@code {
+    private string title = "So";
+}

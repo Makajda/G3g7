@@ -1,17 +1,18 @@
 ﻿@using Microsoft.AspNetCore.Components.Rendering
 
 @code {
+    [CascadingParameter] public Options Options { get; set; }
     [Parameter] public World World { get; set; }
     [Parameter] public Octave Octave { get; set; }
-    [CascadingParameter] public bool IsShowValue { get; set; }
-    [CascadingParameter] public string TitleChrom { get; set; }
 
     protected void AddTd(RenderTreeBuilder __builder) {
         for (var i = 0; i < World.Level; i++) {
             <td />
-            @if (IsShowValue) {
+            @if (!Options.IsHideValue) {
                 <td />
             }
         }
     }
+
+    protected string GetMonochrome() => Options.IsMonochrome ? "color:black" : null;
 }

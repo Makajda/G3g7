@@ -1,21 +1,18 @@
 ﻿@page "/"
 
-<CascadingValue Value="isShowValue">
-    <CascadingValue Value="titleChrom">
-        <div class="page">
-            <div class="sidebar">
-                <ToolsView World="world" Octave="octave" />
-            </div>
-            <div class="main">
-                <OctavesView World="world" Octave="octave" />
-            </div>
+<CascadingValue Value="options">
+    <div class="page">
+        <div class="sidebar">
+            <ToolsView World="world" Octave="octave" OptionsChanged="@(() => StateHasChanged())" />
         </div>
-    </CascadingValue>
+        <div class="main">
+            <OctavesView World="world" Octave="octave" />
+        </div>
+    </div>
 </CascadingValue>
 
 @code {
-    private bool isShowValue = true;
-    private string titleChrom;
+    private Options options = new();
     private World world = new();
     private Octave octave = new(24576d, 0d);
 }

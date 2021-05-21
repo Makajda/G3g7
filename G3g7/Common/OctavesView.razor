@@ -1,4 +1,6 @@
-﻿<table class="tableFixHead">
+﻿@inherits NoteView
+
+<table class="tableFixHead">
     <thead>
         <tr>
             <NextView World="World" Octave="Octave" NextChanged="@(() => StateHasChanged())" />
@@ -12,8 +14,4 @@
 </table>
 
 @code {
-    [Parameter] public World World { get; set; }
-    [Parameter] public Octave Octave { get; set; }
-    [CascadingParameter] public bool IsShowValue { get; set; }
-    [CascadingParameter] public string TitleChrom { get; set; }
 }

@@ -1,8 +1,8 @@
 ﻿@inherits NoteView
 
-<td class="title" style=@(TitleChrom is null ? null : "background-color: yellow;" + TitleChrom)>@title</td>
-@if (IsShowValue) {
-    <td class="title" style="@TitleChrom">@Octave.La</td>
+<td class="title" style=@(Options.IsMonochrome ? "background-color: yellow;" + GetMonochrome() : null)>@title</td>
+@if (!Options.IsHideValue) {
+    <td class="title" style=@GetMonochrome()>@Octave.La</td>
 }
 
 @code {
