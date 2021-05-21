@@ -1,0 +1,8 @@
+﻿<h3>ToolsView</h3>
+
+@code {
+    [Parameter] public World World { get; set; }
+    [Parameter] public Octave Octave { get; set; }
+    [CascadingParameter] public bool IsShowValue { get; set; }
+    [CascadingParameter] public string TitleChrom { get; set; }
+}

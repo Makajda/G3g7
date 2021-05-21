@@ -1,0 +1,15 @@
+﻿@inherits NoteView
+
+<td class="title" style=@(TitleChrom is null ? null : LineCreated + TitleChrom)>@title</td>
+@if (IsShowValue) {
+    <td class="title" style="@TitleChrom">@Octave.Fa</td>
+}
+
+@if (World.IsNext) {
+    <FaView World="World.Next" Octave="Octave.NextOne" LineCreated="" />
+}
+
+@code {
+    [Parameter] public string LineCreated { get; set; } = "background-color: yellow;";
+    private string title = "Fa";
+}

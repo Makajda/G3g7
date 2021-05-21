@@ -1,0 +1,21 @@
+﻿@page "/"
+
+<CascadingValue Value="isShowValue">
+    <CascadingValue Value="titleChrom">
+        <div class="page">
+            <div class="sidebar">
+                <ToolsView World="world" Octave="octave" />
+            </div>
+            <div class="main">
+                <OctavesView World="world" Octave="octave" />
+            </div>
+        </div>
+    </CascadingValue>
+</CascadingValue>
+
+@code {
+    private bool isShowValue = true;
+    private string titleChrom;
+    private World world = new();
+    private Octave octave = new(24576d, 0d);
+}

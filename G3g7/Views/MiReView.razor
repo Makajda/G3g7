@@ -1,0 +1,25 @@
+﻿@inherits NoteView
+
+@if (World.IsNext) {
+    <MiReView World="World.Next" Octave="Octave.NextOne" />
+}
+<tr>
+    @{ AddTd(__builder); }
+    <MiView World="World" Octave="Octave" />
+</tr>
+@if (World.IsNext) {
+    <TiLaView World="World.Next" Octave="Octave.NextTwo" />
+}
+<tr>
+    @{ AddTd(__builder); }
+    <ReView World="World" Octave="Octave" />
+</tr>
+@if (World.IsNext && World.Next != null && World.Next.IsNext) {
+    <TiLaSoView World="World.Next.Next" Octave="Octave.NextTwo.NextOne" />
+}
+@if (World.IsNext) {
+    <FaMiReView World="World.Next" Octave="Octave.NextTwo" />
+}
+
+@code {
+}

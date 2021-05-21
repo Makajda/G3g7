@@ -1,0 +1,43 @@
+﻿@inherits NoteView
+
+<th colspan="@(IsShowValue ? 2 : 1)" align="center">
+    <button class="text-info" style="border-style:none;width:100%;" @onclick="CreateWorld">@title</button>
+</th>
+@if (World.IsNext) {
+    <NextView World="World.Next" Octave="Octave" NextChanged="@(() => NextChanged.InvokeAsync())" />
+}
+<td />
+
+@code {
+    [Parameter] public EventCallback NextChanged { get; set; }
+    private const int maxLevel = 6;
+    private string title;
+
+    protected override void OnInitialized() {
+        base.OnInitialized();
+        SetTitle();
+    }
+
+    private void SetTitle() {
+        title = (3 * Math.Pow(2, World.Level)).ToString() + (World.IsNext || World.Level == maxLevel ? null : " \u2B9A");
+    }
+
+    private async Task CreateWorld() {
+        if (World.Level < maxLevel) {
+            if (World.IsNext) {
+                World.IsNext = false;
+            }
+            else {
+                if (World.Next is null) {
+                    World.Next = new() { Level = World.Level + 1 };
+                    await Octave.CreateNext(Octave);
+                }
+
+                World.IsNext = true;
+            }
+
+            SetTitle();
+            await NextChanged.InvokeAsync();
+        }
+    }
+}

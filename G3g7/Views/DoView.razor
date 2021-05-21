@@ -1,0 +1,15 @@
+﻿@inherits NoteView
+
+<td class="title">@title</td>
+
+@if (IsShowValue) {
+    <td class="title">@Octave.Do</td>
+}
+
+<td colspan="1111" align="right">
+    <input class="legend" @bind="Octave.Legend" />
+</td>
+
+@code {
+    private string title = "Do";
+}

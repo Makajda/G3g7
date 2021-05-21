@@ -1,0 +1,14 @@
+﻿@inherits NoteView
+
+<td class="title" style="@TitleChrom">@title</td>
+@if (IsShowValue) {
+    <td class="title" style="@TitleChrom">@Octave.Re</td>
+}
+
+@if (World.IsNext) {
+    <SoView World="World.Next" Octave="Octave.NextTwo" />
+}
+
+@code {
+    private string title = "Re";
+}

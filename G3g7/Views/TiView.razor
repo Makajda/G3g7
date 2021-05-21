@@ -1,0 +1,11 @@
+﻿@inherits NoteView
+
+<td class="title" style="@TitleChrom">@title</td>
+@if (IsShowValue) {
+    <td class="title" style="@TitleChrom">@Octave.Ti</td>
+}
+
+    @code {
+private string title = "Ti";
+
+    }
