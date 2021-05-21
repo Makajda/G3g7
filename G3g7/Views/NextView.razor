@@ -1,7 +1,7 @@
 ﻿@inherits NoteView
 
 <th colspan="@(Options.IsHideValue ? 1 : 2)" align="center">
-    <button class="text-info" style="border-style:none;width:100%;" @onclick="CreateWorld">@title</button>
+    <button class="text-info" style="height:2.5rem;border-style:none;width:100%;" @onclick="CreateWorld">@title</button>
 </th>
 @if (World.IsNext) {
     <NextView World="World.Next" Octave="Octave" NextChanged="@(() => NextChanged.InvokeAsync())" />

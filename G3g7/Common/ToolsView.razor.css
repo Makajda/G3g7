@@ -10,3 +10,10 @@
     cursor: pointer;
     text-align: center;
 }
+
+.top-row {
+    height: 2.5rem;
+    line-height: 2.5rem;
+    background-color: white;
+    text-align: right;
+}

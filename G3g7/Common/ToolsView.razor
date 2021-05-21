@@ -1,5 +1,10 @@
 ﻿@inherits NoteView
 
+<div class="top-row">
+    <div class="text-info">forces:</div>
+</div>
+
+
 <button @onclick=@OnHideValue>@(Options.IsHideValue ? "show value" : "hide value")</button>
 <button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=@OnIncValue>value*2</button>
 <button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=@OnDecValue>value:2</button>
