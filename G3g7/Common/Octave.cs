@@ -45,5 +45,14 @@ namespace G3g7.Common {
             begin *= k;
             end *= k;
         }
+
+        public void SetLegends(string legends) {
+
+        }
+
+        public string GetLegends() {
+            var legends = Legend;
+            return legends;
+        }
     }
 }

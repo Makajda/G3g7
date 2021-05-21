@@ -1,4 +1,5 @@
 ﻿@page "/"
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 
 <CascadingValue Value="options">
     <div class="page">
@@ -15,4 +16,10 @@
     private Options options = new();
     private World world = new();
     private Octave octave = new(24576d, 0d);
+
+    protected override async Task OnInitializedAsync() {
+        await base.OnInitializedAsync();
+        var legends = await localStorage.GetItemAsync<string>("legends");
+        octave.SetLegends(legends);
+    }
 }
