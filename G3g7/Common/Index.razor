@@ -4,7 +4,7 @@
 <CascadingValue Value="options">
     <div class="page">
         <div class="sidebar">
-            <ToolsView World="world" Octave="octave" OptionsChanged="@(() => StateHasChanged())" />
+            <ToolsView World="world" Octave="octave" OptionsChanged="_=> {/*blazor call StateHasChanged*/}" />
         </div>
         <div class="main">
             <OctavesView World="world" Octave="octave" />

@@ -1,17 +1,21 @@
 ﻿@inherits NoteView
+@using Microsoft.AspNetCore.Components.Rendering
 
 <div class="top-row">
     <div>forces:</div>
 </div>
 
-<button @onclick=@OnHideValue>@(Options.IsHideValue ? "show value" : "hide value")</button>
-<button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=@OnIncValue>value*2</button>
-<button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=@OnDecValue>value:2</button>
-<button @onclick=@OnMonochrome>@(Options.IsMonochrome ? "color on" : "color off")</button>
+@{ DivCosmoses(__builder); }
+
+<hr />
+
+<button @onclick=OnHideValue>@(Options.IsHideValue ? "show value" : "hide value")</button>
+<button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=OnIncValue>value*2</button>
+<button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=OnDecValue>value:2</button>
+<button @onclick=OnMonochrome>@(Options.IsMonochrome ? "color on" : "color off")</button>
 
 @code {
     [Parameter] public EventCallback OptionsChanged { get; set; }
-    private string background;
 
     private async Task OnHideValue() {
         Options.IsHideValue = !Options.IsHideValue;
@@ -31,5 +35,19 @@
     private async Task OnMonochrome() {
         Options.IsMonochrome = !Options.IsMonochrome;
         await OptionsChanged.InvokeAsync();
+    }
+
+    private async Task OnCosmos(int id) {
+        Options.Cosmos = id;
+        await OptionsChanged.InvokeAsync();
+    }
+
+    private void DivCosmoses(RenderTreeBuilder __builder) {
+        var cosmosId = 0;
+        foreach (var cosmos in Options.Cosmoses) {
+            var z = cosmosId;
+            <button style=@(z == Options.Cosmos ? "color:gold" : null) @onclick="async _ => await OnCosmos(z)">@cosmos</button>
+            cosmosId++;
+        }
     }
 }

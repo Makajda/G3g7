@@ -3,7 +3,7 @@
 <table class="tableFixHead">
     <thead>
         <tr>
-            <NextView World="World" Octave="Octave" NextChanged="@(() => StateHasChanged())" />
+            <NextView World="World" Octave="Octave" NextChanged="_=> {/*blazor call StateHasChanged*/}" />
         </tr>
     </thead>
     <tr>
@@ -14,4 +14,7 @@
 </table>
 
 @code {
+    protected override void OnAfterRender(bool firstRender) {
+        base.OnAfterRender(firstRender);
+    }
 }
