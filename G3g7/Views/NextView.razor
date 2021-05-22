@@ -6,7 +6,9 @@
 @if (World.IsNext) {
     <NextView World="World.Next" Octave="Octave" NextChanged="@(() => NextChanged.InvokeAsync())" />
 }
-<th />
+@if (World.Level == 0) {
+    <th />
+}
 
 @code {
     [Parameter] public EventCallback NextChanged { get; set; }

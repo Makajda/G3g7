@@ -1,6 +1,6 @@
 ﻿save and load legend
 save and load last param
-css clear style
+css clear style wwwroot
 clear
 publish (https)
 

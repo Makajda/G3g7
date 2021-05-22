@@ -1,5 +1,5 @@
 ﻿@page "/"
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@*@inject Blazored.LocalStorage.ILocalStorageService localStorage*@
 
 <CascadingValue Value="options">
     @*    <div class="page">*@
@@ -19,7 +19,7 @@
 
     protected override async Task OnInitializedAsync() {
         await base.OnInitializedAsync();
-        var legends = await localStorage.GetItemAsync<string>("legends");
-        octave.SetLegends(legends);
+        //var legends = await localStorage.GetItemAsync<string>("legends");
+        //octave.SetLegends(legends);
     }
 }

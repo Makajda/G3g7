@@ -8,6 +8,12 @@ a, .btn-link {
     color: #0366d6;
 }
 
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
