@@ -1,9 +1,8 @@
 ﻿@inherits NoteView
 
 <div class="top-row">
-    <div class="text-info">forces:</div>
+    <div>forces:</div>
 </div>
-
 
 <button @onclick=@OnHideValue>@(Options.IsHideValue ? "show value" : "hide value")</button>
 <button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=@OnIncValue>value*2</button>
@@ -12,6 +11,7 @@
 
 @code {
     [Parameter] public EventCallback OptionsChanged { get; set; }
+    private string background;
 
     private async Task OnHideValue() {
         Options.IsHideValue = !Options.IsHideValue;

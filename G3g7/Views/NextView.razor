@@ -1,12 +1,12 @@
 ﻿@inherits NoteView
 
 <th colspan="@(Options.IsHideValue ? 1 : 2)" align="center">
-    <button class="text-info" style="height:2.5rem;border-style:none;width:100%;" @onclick="CreateWorld">@title</button>
+    <button @onclick="CreateWorld">@title</button>
 </th>
 @if (World.IsNext) {
     <NextView World="World.Next" Octave="Octave" NextChanged="@(() => NextChanged.InvokeAsync())" />
 }
-<td />
+<th />
 
 @code {
     [Parameter] public EventCallback NextChanged { get; set; }

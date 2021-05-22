@@ -12,8 +12,9 @@
 }
 
 .top-row {
+    color: #5bc0de;
+    background-color: white;
     height: 2.5rem;
     line-height: 2.5rem;
-    background-color: white;
     text-align: right;
 }
