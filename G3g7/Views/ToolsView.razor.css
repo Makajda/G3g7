@@ -6,7 +6,7 @@
     color: white;
     padding: 5px 0;
     margin: 5px 0;
-    font-size: 16px;
+    font-size: 12px;
     cursor: pointer;
     text-align: center;
 }
@@ -17,4 +17,17 @@
     height: 2.5rem;
     line-height: 2.5rem;
     text-align: right;
+}
+
+.mainButton {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: white;
+    padding: 5px 0;
+    margin: 5px 0;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
 }

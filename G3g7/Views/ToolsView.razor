@@ -46,7 +46,7 @@
         var cosmosId = 0;
         foreach (var cosmos in Options.Cosmoses) {
             var z = cosmosId;
-            <button style=@(z == Options.Cosmos ? "color:gold" : null) @onclick="async _ => await OnCosmos(z)">@cosmos</button>
+            <button class="mainButton" style=@(z == Options.Cosmos ? "color:gold" : null) @onclick="async _ => await OnCosmos(z)">@cosmos</button>
             cosmosId++;
         }
     }
