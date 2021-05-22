@@ -2,14 +2,14 @@
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 
 <CascadingValue Value="options">
-    <div class="page">
-        <div class="sidebar">
+    @*    <div class="page">*@
+    @*<div class="sidebar">
             <ToolsView World="world" Octave="octave" OptionsChanged="_=> {/*blazor call StateHasChanged*/}" />
-        </div>
-        <div class="main">
-            <OctavesView World="world" Octave="octave" />
-        </div>
-    </div>
+        </div>*@
+    @*<div class="main">*@
+    <OctavesView World="world" Octave="octave" />
+    @*</div>*@
+    @*    </div>*@
 </CascadingValue>
 
 @code {
