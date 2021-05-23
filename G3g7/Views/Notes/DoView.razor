@@ -1,6 +1,6 @@
 ﻿@inherits NoteView
 
-<td class="title">@title</td>
+<td class="title" style="@GetMonochrome(true)">@title</td>
 
 @if (!Options.IsHideValue) {
     <td class="title">@Octave.Do</td>

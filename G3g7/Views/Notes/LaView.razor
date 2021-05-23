@@ -1,6 +1,6 @@
 ﻿@inherits NoteView
 
-<td class="title" style=@(Options.IsMonochrome ? "background-color: yellow;" + GetMonochrome() : null)>@title</td>
+<td class="title" style="@GetMonochrome(true, true)">@title</td>
 @if (!Options.IsHideValue) {
     <td class="title" style=@GetMonochrome()>@Octave.La</td>
 }

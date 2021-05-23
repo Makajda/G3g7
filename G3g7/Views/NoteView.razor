@@ -14,5 +14,16 @@
         }
     }
 
-    protected string GetMonochrome() => Options.IsMonochrome ? "color:black" : null;
+    protected string GetMonochrome(bool isForce = false, bool isCreated = false) {
+        string result = null;
+
+        if (Options.IsMonochrome) {
+            result += $"color:{(isForce ? "red" : "black")};";
+            if (isCreated) {
+                result += $"background-color:yellow;";
+            }
+        }
+
+        return result;
+    }
 }
