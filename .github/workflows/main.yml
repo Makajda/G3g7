@@ -1,0 +1,28 @@
+name: Deploy to GitHub Pages
+
+# Run workflow on every push to the master branch
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy-to-github-pages:
+    # use ubuntu-latest image to run steps on
+    runs-on: ubuntu-latest
+    steps:
+    #checkout
+    - uses: actions/checkout@v2
+    #dotnet
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0
+    #project
+    - name: Publish .NET Core Project
+      run: dotnet publish G3g7.csproj -c Release -o release --nologo
+    #deploy
+    - name: Commit wwwroot to GitHub Pages
+      uses: Makajda/github-pages-deploy-action@4.3.1
+      with:
+        branch: gh-pages
+        folder: release/wwwroot
