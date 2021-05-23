@@ -19,7 +19,7 @@ jobs:
         dotnet-version: '5.0.x'
     #project
     - name: Publish .NET Core Project
-      run: dotnet publish G3g7.csproj -c Release -o release --nologo
+      run: dotnet publish G3g7/G3g7.csproj -c Release -o release --nologo
     #deploy
     - name: Commit wwwroot to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@4.1.3
