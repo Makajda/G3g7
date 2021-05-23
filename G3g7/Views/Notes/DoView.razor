@@ -1,9 +1,9 @@
 ﻿@inherits NoteView
 
-<td class="title" style="@GetMonochrome(true)">@title</td>
+<td class="title" style="@GetMonochrome(true)" @onclick="OnClick">@title</td>
 
 @if (!Options.IsHideValue) {
-    <td class="title">@Octave.Do</td>
+    <td class="title" @onclick="OnClick">@Octave.Do</td>
 }
 
 <td colspan="1111" align="right">
@@ -11,5 +11,11 @@
 </td>
 
 @code {
+    [Parameter] public EventCallback VisibleChanged { get; set; }
     private string title = "Do";
+
+    private async Task OnClick() {
+        Octave.IsVisible = !Octave.IsVisible;
+        await VisibleChanged.InvokeAsync();
+    }
 }

@@ -9,9 +9,9 @@
 
 <hr />
 
-<button @onclick=OnHideValue>@(Options.IsHideValue ? "show value" : "hide value")</button>
-<button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=OnIncValue>value*2</button>
-<button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=OnDecValue>value:2</button>
+<button @onclick=OnHideValue>@(Options.IsHideValue ? "show frq" : "hide frq")</button>
+<button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=OnIncValue>frq * 2</button>
+<button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=OnDecValue>frq : 2</button>
 <button @onclick=OnMonochrome>@(Options.IsMonochrome ? "color on" : "color off")</button>
 
 @code {

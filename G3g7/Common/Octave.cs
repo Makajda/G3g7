@@ -17,6 +17,7 @@ namespace G3g7.Common {
         public double Mi => (begin + 3 * end) / 4d;
         public double Re => (begin + 7 * end) / 8d;
 
+        public bool IsVisible { get; set; } = true;
         public string Legend { get; set; }
 
         public Octave NextOne { get; set; }

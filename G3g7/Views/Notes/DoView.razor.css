@@ -1,9 +1,11 @@
 ﻿.title {
     color: blueviolet;
+    background-color: #EAFAF1;
     font-weight: 500;
     border-top: solid;
     border-top-width: 1px;
     padding-left: 5px;
+    cursor: pointer;
 }
 .legend {
     color: darkgray;
