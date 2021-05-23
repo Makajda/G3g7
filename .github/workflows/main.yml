@@ -22,7 +22,7 @@ jobs:
       run: dotnet publish G3g7.csproj -c Release -o release --nologo
     #deploy
     - name: Commit wwwroot to GitHub Pages
-      uses: Makajda/G3g7/github-pages-deploy-action@3.7.1
+      uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
         branch: gh-pages
         folder: release/wwwroot
