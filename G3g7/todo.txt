@@ -4,3 +4,5 @@ css clear style wwwroot
 clear
 publish (https)
 
+two buttons for Do
+
