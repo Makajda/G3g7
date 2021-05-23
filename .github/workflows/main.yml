@@ -20,6 +20,8 @@ jobs:
     #project
     - name: Publish .NET Core Project
       run: dotnet publish G3g7/G3g7.csproj -c Release -o release --nologo
+    - name: Change base-tag in index.html from / to G3g7
+      run: sed -i 's/<base href="\/" \/>/<base href="\/G3g7\/" \/>/g' release/wwwroot/index.html
     #deploy
     - name: Commit wwwroot to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@4.1.3
