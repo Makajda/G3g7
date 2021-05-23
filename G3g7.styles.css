@@ -1,0 +1,121 @@
+/* /Common/Index.razor.rz.scp.css */
+.page[b-04ady5k7e0] {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.main[b-04ady5k7e0] {
+    flex: 1;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.sidebar[b-04ady5k7e0] {
+    background-image: linear-gradient(180deg, #00008B 0%, #00bfff 33%, #ffa500 92%, #ff4500 100%);
+    width: 150px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+/* /Views/NextView.razor.rz.scp.css */
+button[b-ywiggwoc45] {
+    color: #5bc0de;
+    height: 2.5rem;
+    border-style: none;
+    width: 100%;
+}
+/* /Views/Notes/DoView.razor.rz.scp.css */
+.title[b-8tyitomdlt] {
+    color: blueviolet;
+    font-weight: 500;
+    border-top: solid;
+    border-top-width: 1px;
+    padding-left: 5px;
+}
+.legend[b-8tyitomdlt] {
+    color: darkgray;
+    padding-left: 10px;
+    white-space: nowrap;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    border-bottom:dotted;
+    border-width:1px;
+}
+/* /Views/Notes/FaView.razor.rz.scp.css */
+.title[b-ol0oyrlec3] {
+    color: gold;
+    border-top: solid;
+    border-top-width: 1px;
+    padding-left: 5px;
+}
+/* /Views/Notes/LaView.razor.rz.scp.css */
+.title[b-8i4ap5zib1] {
+    color: deepskyblue;
+    border-top: solid;
+    border-top-width: 1px;
+    padding-left: 5px;
+}
+/* /Views/Notes/MiView.razor.rz.scp.css */
+.title[b-zzsg1tzfwd] {
+    color: orange;
+    border-top: solid;
+    border-top-width: 1px;
+    padding-left: 5px;
+}
+/* /Views/Notes/ReView.razor.rz.scp.css */
+.title[b-p7oarawrqy] {
+    color: orangered;
+    border-top: solid;
+    border-top-width: 1px;
+    padding-left: 5px;
+}
+/* /Views/Notes/SoView.razor.rz.scp.css */
+.title[b-8z6km7pp6r] {
+    color: limegreen;
+    border-top: solid;
+    border-top-width: 1px;
+    padding-left: 5px;
+}
+/* /Views/Notes/TiView.razor.rz.scp.css */
+.title[b-3je7ro85lq] {
+    color: blue;
+    border-top: solid;
+    border-top-width: 1px;
+    padding-left: 5px;
+}
+/* /Views/ToolsView.razor.rz.scp.css */
+button[b-szqvbhldsw] {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: white;
+    padding: 5px 0;
+    margin: 5px 0;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.top-row[b-szqvbhldsw] {
+    color: #5bc0de;
+    background-color: white;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: right;
+}
+
+.mainButton[b-szqvbhldsw] {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: white;
+    padding: 5px 0;
+    margin: 5px 0;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
