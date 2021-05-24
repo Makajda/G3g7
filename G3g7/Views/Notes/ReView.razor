@@ -5,8 +5,8 @@
     <td class="title" style="@GetMonochrome()">@Octave.Re</td>
 }
 
-@if (World.IsNext) {
-    <SoView World="World.Next" Octave="Octave.NextTwo" />
+@if (World.IsNext && Octave.NextTwo.IsVisible) {
+    <SoView World="World.Next" Octave="Octave.NextTwo" VisibleChanged="_=> VisibleChanged.InvokeAsync()" />
 }
 
 @code {

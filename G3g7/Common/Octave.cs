@@ -5,26 +5,17 @@ namespace G3g7.Common {
     public class Octave {
         private double begin;
         private double end;
-        private bool isVisible = true;
-        public Octave(double begin, double end) {
+        public Octave(double begin, double end, Octave parent = null) {
             this.begin = begin;
             this.end = end;
-        }
-
-        public event Action VisibleChanged;
-        public bool IsVisible {
-            get => isVisible;
-            set {
-                if (isVisible != value) {
-                    isVisible = value;
-                    VisibleChanged?.Invoke();
-                }
-            }
+            Parent = parent;
         }
 
         public string Legend { get; set; }
         public Octave NextOne { get; set; }
         public Octave NextTwo { get; set; }
+        public bool IsVisible { get; set; } = true;
+        public Octave Parent { get; set; }
 
         public double Do => begin;
         public double Ti => (7 * begin + end) / 8d;
@@ -34,10 +25,10 @@ namespace G3g7.Common {
         public double Mi => (begin + 3 * end) / 4d;
         public double Re => (begin + 7 * end) / 8d;
 
-        public async Task CreateNext(Octave octave) {
+        public static async Task CreateNext(Octave octave) {
             if (octave.NextOne is null) {
-                octave.NextOne = new Octave(octave.So, octave.Mi);
-                octave.NextTwo = new Octave(octave.Mi, octave.end);
+                octave.NextOne = new Octave(octave.So, octave.Mi, octave);
+                octave.NextTwo = new Octave(octave.Mi, octave.end, octave);
             }
             else {
                 await CreateNext(octave.NextOne);
@@ -45,7 +36,7 @@ namespace G3g7.Common {
             }
         }
 
-        public async Task Recalc(Octave octave, double k) {
+        public static async Task Recalc(Octave octave, double k) {
             octave.Recalc(k);
             if (octave.NextOne is not null) {
                 await Recalc(octave.NextOne, k);

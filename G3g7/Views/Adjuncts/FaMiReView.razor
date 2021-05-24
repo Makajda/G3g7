@@ -1,10 +1,12 @@
 ﻿@inherits NoteView
 
-<tr>
-    @{ AddTd(__builder); }
-    <FaView World="World" Octave="Octave" />
-</tr>
-<MiReView World="World" Octave="Octave" />
+@if (Octave.IsVisible) {
+    <tr>
+        @{ AddTd(__builder); }
+        <FaView World="World" Octave="Octave" />
+    </tr>
+    <MiReView World="World" Octave="Octave" VisibleChanged="_=> VisibleChanged.InvokeAsync()" />
+}
 
 @code {
 }

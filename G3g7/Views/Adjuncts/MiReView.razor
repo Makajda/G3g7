@@ -1,24 +1,26 @@
 ﻿@inherits NoteView
 
-@if (World.IsNext) {
-    <MiReView World="World.Next" Octave="Octave.NextOne" />
-}
-<tr>
-    @{ AddTd(__builder); }
-    <MiView World="World" Octave="Octave" />
-</tr>
-@if (World.IsNext) {
-    <TiLaView World="World.Next" Octave="Octave.NextTwo" />
-}
-<tr>
-    @{ AddTd(__builder); }
-    <ReView World="World" Octave="Octave" />
-</tr>
-@if (World.IsNext && World.Next != null && World.Next.IsNext) {
-    <TiLaSoView World="World.Next.Next" Octave="Octave.NextTwo.NextOne" />
-}
-@if (World.IsNext) {
-    <FaMiReView World="World.Next" Octave="Octave.NextTwo" />
+@if (Octave.IsVisible) {
+    @if (World.IsNext) {
+        <MiReView World="World.Next" Octave="Octave.NextOne" VisibleChanged="_=> VisibleChanged.InvokeAsync()" />
+    }
+    <tr>
+        @{ AddTd(__builder); }
+        <MiView World="World" Octave="Octave" VisibleChanged="_=> VisibleChanged.InvokeAsync()" />
+    </tr>
+    @if (World.IsNext) {
+        <TiLaView World="World.Next" Octave="Octave.NextTwo" />
+    }
+    <tr>
+        @{ AddTd(__builder); }
+        <ReView World="World" Octave="Octave" VisibleChanged="_=> VisibleChanged.InvokeAsync()" />
+    </tr>
+    @if (World.IsNext && World.Next != null && World.Next.IsNext && Octave.NextTwo.IsVisible) {
+        <TiLaSoView World="World.Next.Next" Octave="Octave.NextTwo.NextOne" VisibleChanged="_=> VisibleChanged.InvokeAsync()" />
+    }
+    @if (World.IsNext) {
+        <FaMiReView World="World.Next" Octave="Octave.NextTwo" VisibleChanged="_=> VisibleChanged.InvokeAsync()" />
+    }
 }
 
 @code {

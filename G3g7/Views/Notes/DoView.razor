@@ -1,9 +1,13 @@
 ﻿@inherits NoteView
 
-<td class="title" style="@GetMonochrome(true)" @onclick="OnClick">@title</td>
+<td class="title" style="@GetBackground(true)" @onclick="OnClick">@title</td>
 
 @if (!Options.IsHideValue) {
-    <td class="title" @onclick="OnClick">@Octave.Do</td>
+    <td class="title" style="@GetBackground(false)" @onclick="OnClick">@Octave.Do</td>
+}
+
+@if (World.IsNext) {
+    <BlankView World="World.Next" />
 }
 
 <td colspan="1111" align="right">
@@ -13,7 +17,21 @@
 @code {
     private string title = "Do";
 
-    private void OnClick() {
+    private async Task OnClick() {
         Octave.IsVisible = !Octave.IsVisible;
+        await VisibleChanged.InvokeAsync();
+    }
+
+    private string GetBackground(bool isTitle) {
+        string result = null;
+        if (isTitle) {
+            result = GetMonochrome(true);
+        }
+
+        if (!Octave.IsVisible) {
+            result += "border-width:3px;";
+        }
+
+        return result;
     }
 }

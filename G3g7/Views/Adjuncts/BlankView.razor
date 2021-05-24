@@ -1,0 +1,13 @@
+﻿@inherits NoteView
+
+<td />
+@if (!Options.IsHideValue) {
+    <td />
+}
+
+@if (World.IsNext) {
+    <BlankView World="World.Next" />
+}
+
+@code {
+}

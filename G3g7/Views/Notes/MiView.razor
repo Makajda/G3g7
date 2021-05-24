@@ -6,7 +6,7 @@
 }
 
 @if (World.IsNext) {
-    <DoView World="World" Octave="Octave.NextTwo" />
+    <DoView World="World" Octave="Octave.NextTwo" VisibleChanged="_=> VisibleChanged.InvokeAsync()" />
 }
 
 @code {

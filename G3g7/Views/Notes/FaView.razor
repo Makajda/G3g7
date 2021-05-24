@@ -4,8 +4,7 @@
 @if (!Options.IsHideValue) {
     <td class="title" style=@GetMonochrome()>@Octave.Fa</td>
 }
-
-@if (World.IsNext) {
+@if (World.IsNext && Octave.NextOne.IsVisible) {
     <FaView World="World.Next" Octave="Octave.NextOne" IsCreated=false />
 }
 

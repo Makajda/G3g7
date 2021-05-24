@@ -1,12 +1,14 @@
 ﻿@inherits NoteView
 
-<TiLaView World="World" Octave="Octave" />
-<tr>
-    @{ AddTd(__builder); }
-    <SoView World="World" Octave="Octave" />
-</tr>
-@if (World.IsNext) {
-    <TiLaSoView World="World.Next" Octave="Octave.NextOne" />
+@if (Octave.IsVisible) {
+    <TiLaView World="World" Octave="Octave" />
+    <tr>
+        @{ AddTd(__builder); }
+        <SoView World="World" Octave="Octave" VisibleChanged="_=> VisibleChanged.InvokeAsync()" />
+    </tr>
+    @if (World.IsNext) {
+        <TiLaSoView World="World.Next" Octave="Octave.NextOne" VisibleChanged="_=> VisibleChanged.InvokeAsync()" />
+    }
 }
 
 @code {

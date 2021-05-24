@@ -7,14 +7,15 @@
     padding-left: 5px;
     cursor: pointer;
 }
+
 .legend {
     color: darkgray;
     padding-left: 10px;
     white-space: nowrap;
-    border-top:none;
-    border-left:none;
-    border-right:none;
-    border-bottom:dotted;
-    border-width:1px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: dotted;
+    border-width: 1px;
     width: 23rem;
 }

@@ -1,12 +1,12 @@
 ﻿@inherits NoteView
 
+
 <td class="title" style="@GetMonochrome()">@title</td>
 @if (!Options.IsHideValue) {
     <td class="title" style="@GetMonochrome()">@Octave.So</td>
 }
-
 @if (World.IsNext) {
-    <DoView World="World.Next" Octave="Octave.NextOne" />
+    <DoView World="World.Next" Octave="Octave.NextOne" VisibleChanged="_=> VisibleChanged.InvokeAsync()" />
 }
 
 @code {
