@@ -1,13 +1,30 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace G3g7.Common {
     public class Octave {
         private double begin;
         private double end;
+        private bool isVisible = true;
         public Octave(double begin, double end) {
             this.begin = begin;
             this.end = end;
         }
+
+        public event Action VisibleChanged;
+        public bool IsVisible {
+            get => isVisible;
+            set {
+                if (isVisible != value) {
+                    isVisible = value;
+                    VisibleChanged?.Invoke();
+                }
+            }
+        }
+
+        public string Legend { get; set; }
+        public Octave NextOne { get; set; }
+        public Octave NextTwo { get; set; }
 
         public double Do => begin;
         public double Ti => (7 * begin + end) / 8d;
@@ -16,12 +33,6 @@ namespace G3g7.Common {
         public double Fa => (begin + 2 * end) / 3d;
         public double Mi => (begin + 3 * end) / 4d;
         public double Re => (begin + 7 * end) / 8d;
-
-        public bool IsVisible { get; set; } = true;
-        public string Legend { get; set; }
-
-        public Octave NextOne { get; set; }
-        public Octave NextTwo { get; set; }
 
         public async Task CreateNext(Octave octave) {
             if (octave.NextOne is null) {

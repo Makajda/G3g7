@@ -1,9 +1,21 @@
 ﻿@using Microsoft.AspNetCore.Components.Rendering
+@implements IDisposable
 
 @code {
     [CascadingParameter] public Options Options { get; set; }
     [Parameter] public World World { get; set; }
     [Parameter] public Octave Octave { get; set; }
+
+    public void Dispose() {
+        Octave.VisibleChanged -= OnVisibleChanged;
+    }
+
+    protected override void OnInitialized() {
+        base.OnInitialized();
+        Octave.VisibleChanged += OnVisibleChanged;
+    }
+
+    private void OnVisibleChanged() => StateHasChanged();
 
     protected void AddTd(RenderTreeBuilder __builder) {
         for (var i = 0; i < World.Level; i++) {

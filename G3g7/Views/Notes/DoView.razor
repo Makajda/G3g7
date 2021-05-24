@@ -11,11 +11,9 @@
 </td>
 
 @code {
-    [Parameter] public EventCallback VisibleChanged { get; set; }
     private string title = "Do";
 
-    private async Task OnClick() {
+    private void OnClick() {
         Octave.IsVisible = !Octave.IsVisible;
-        await VisibleChanged.InvokeAsync();
     }
 }
