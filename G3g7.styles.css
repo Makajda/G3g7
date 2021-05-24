@@ -13,7 +13,7 @@
 
 .sidebar[b-04ady5k7e0] {
     background-image: linear-gradient(180deg, #00008B 0%, #00bfff 33%, #ffa500 92%, #ff4500 100%);
-    width: 150px;
+    width: 120px;
     height: 100vh;
     position: sticky;
     top: 0;
@@ -24,24 +24,29 @@ button[b-ywiggwoc45] {
     height: 2.5rem;
     border-style: none;
     width: 100%;
+    white-space: nowrap;
 }
 /* /Views/Notes/DoView.razor.rz.scp.css */
 .title[b-8tyitomdlt] {
     color: blueviolet;
+    background-color: #EAFAF1;
     font-weight: 500;
     border-top: solid;
     border-top-width: 1px;
     padding-left: 5px;
+    cursor: pointer;
 }
+
 .legend[b-8tyitomdlt] {
     color: darkgray;
     padding-left: 10px;
     white-space: nowrap;
-    border-top:none;
-    border-left:none;
-    border-right:none;
-    border-bottom:dotted;
-    border-width:1px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: dotted;
+    border-width: 1px;
+    width: 23rem;
 }
 /* /Views/Notes/FaView.razor.rz.scp.css */
 .title[b-ol0oyrlec3] {
@@ -94,7 +99,7 @@ button[b-szqvbhldsw] {
     color: white;
     padding: 5px 0;
     margin: 5px 0;
-    font-size: 12px;
+    font-size: 14px;
     cursor: pointer;
     text-align: center;
 }
