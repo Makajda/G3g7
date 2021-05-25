@@ -24,8 +24,8 @@
 
     private string GetBackground(bool isTitle) {
         string result = null;
-        if (isTitle) {
-            result = GetMonochrome(true);
+        if (isTitle && Options.IsMonochrome) {
+            result = "color:red;border-color:blueviolet;";
         }
 
         if (!Octave.IsVisible) {

@@ -19,7 +19,7 @@
         string result = null;
 
         if (Options.IsMonochrome) {
-            result += $"color:{(isForce ? "red" : "black")};";
+            result += $"color:{(isForce ? "red" : "black")};border-color:black;";
             if (isCreated) {
                 result += $"background-color:yellow;";
             }
