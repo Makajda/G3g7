@@ -4,7 +4,7 @@
 <CascadingValue Value="options">
     <div class="page">
         <div class="sidebar">
-            <ToolsView World="world" OptionsChanged="_=> {/*blazor call StateHasChanged*/}" />
+            <ToolsView World="world" OptionsChanged="_=> Octave.ChangeCosmos()" />
         </div>
         <div class="main">
             <OctavesView World="world" Octave="octave" />
@@ -20,7 +20,7 @@
     protected override void OnInitialized() {
         base.OnInitialized();
         options = new(localStorage);
+        octave = new(new Storage(localStorage, options));
         world = new();
-        octave = new(localStorage);
     }
 }

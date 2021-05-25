@@ -26,18 +26,7 @@
 
     private async Task CreateWorld() {
         if (World.Level < maxLevel) {
-            if (World.IsNext) {
-                World.IsNext = false;
-            }
-            else {
-                if (World.Next is null) {
-                    World.Next = new() { Level = World.Level + 1 };
-                    await Octave.CreateNext();
-                }
-
-                World.IsNext = true;
-            }
-
+            await World.CreateWorld();
             SetTitle();
             await NextChanged.InvokeAsync();
         }
