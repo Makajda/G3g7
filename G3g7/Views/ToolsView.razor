@@ -41,6 +41,7 @@
 
     private async Task OnCosmos(int id) {
         Options.Cosmos = id;
+        await Octave.ChangeCosmos();
         await OptionsChanged.InvokeAsync();
     }
 
