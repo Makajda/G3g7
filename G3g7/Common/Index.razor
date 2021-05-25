@@ -1,11 +1,10 @@
 ﻿@page "/"
 @inject Blazored.LocalStorage.ISyncLocalStorageService localStorage
-@implements IDisposable
 
 <CascadingValue Value="options">
     <div class="page">
         <div class="sidebar">
-            <ToolsView World="world" Octave="octave" OptionsChanged="_=> {/*blazor call StateHasChanged*/}" />
+            <ToolsView World="world" OptionsChanged="_=> {/*blazor call StateHasChanged*/}" />
         </div>
         <div class="main">
             <OctavesView World="world" Octave="octave" />

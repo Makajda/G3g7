@@ -1,9 +1,9 @@
-﻿@inherits NoteView
+﻿@inherits BaseView
 
 <table class="tableFixHead">
     <thead>
         <tr>
-            <NextView World="World" Octave="Octave" NextChanged="_=> {/*blazor call StateHasChanged*/}" />
+            <NextView World="World" NextChanged="_=> {/*blazor call StateHasChanged*/}" />
         </tr>
     </thead>
     <tr>
@@ -14,4 +14,5 @@
 </table>
 
 @code {
+    [Parameter] public Octave Octave { get; set; }
 }

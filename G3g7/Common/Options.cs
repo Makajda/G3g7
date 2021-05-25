@@ -32,7 +32,7 @@ namespace G3g7.Common {
             set {
                 if (isMonochrome != value) {
                     isMonochrome = value;
-                    localStorage.SetItem(HideValueKey, isMonochrome);
+                    localStorage.SetItem(MonochromeKey, isMonochrome);
                 }
             }
         }
@@ -42,7 +42,7 @@ namespace G3g7.Common {
             set {
                 if (cosmos != value) {
                     cosmos = value;
-                    localStorage.SetItem(HideValueKey, cosmos);
+                    localStorage.SetItem(CosmosKey, cosmos);
                 }
             }
         }

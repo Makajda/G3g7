@@ -1,4 +1,4 @@
-﻿@inherits NoteView
+﻿@inherits BaseView
 @using Microsoft.AspNetCore.Components.Rendering
 
 <div class="top-row">
@@ -10,8 +10,10 @@
 <hr />
 
 <button @onclick=OnHideValue>@(Options.IsHideValue ? "show frq" : "hide frq")</button>
-<button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=OnIncValue>frq * 2</button>
-<button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null) @onclick=OnDecValue>frq : 2</button>
+<button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null)
+        @onclick=OnIncValue>frq * 2</button>
+<button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null)
+        @onclick=OnDecValue>frq : 2</button>
 <button @onclick=OnMonochrome>@(Options.IsMonochrome ? "color on" : "color off")</button>
 
 @code {
@@ -23,12 +25,12 @@
     }
 
     private async Task OnIncValue() {
-        await Octave.Recalc(Octave, 2d);
+        await Octave.Recalc(2d);
         await OptionsChanged.InvokeAsync();
     }
 
     private async Task OnDecValue() {
-        await Octave.Recalc(Octave, 0.5d);
+        await Octave.Recalc(0.5d);
         await OptionsChanged.InvokeAsync();
     }
 
@@ -46,7 +48,8 @@
         var cosmosId = 0;
         foreach (var cosmos in Options.Cosmoses) {
             var z = cosmosId;
-            <button class="mainButton" style=@(z == Options.Cosmos ? "color:gold" : null) @onclick="async _ => await OnCosmos(z)">@cosmos</button>
+            <button class="mainButton" style=@(z == Options.Cosmos ? "color:gold" : null)
+                    @onclick="async _ => await OnCosmos(z)">@cosmos</button>
             cosmosId++;
         }
     }

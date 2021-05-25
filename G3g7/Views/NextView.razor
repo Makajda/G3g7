@@ -1,10 +1,10 @@
-﻿@inherits NoteView
+﻿@inherits BaseView
 
 <th colspan="@(Options.IsHideValue ? 1 : 2)" align="center">
     <button @onclick="CreateWorld">@title</button>
 </th>
 @if (World.IsNext) {
-    <NextView World="World.Next" Octave="Octave" NextChanged="@(() => NextChanged.InvokeAsync())" />
+    <NextView World="World.Next" NextChanged="@(() => NextChanged.InvokeAsync())" />
 }
 @if (World.Level == 0) {
     <th />
@@ -32,7 +32,7 @@
             else {
                 if (World.Next is null) {
                     World.Next = new() { Level = World.Level + 1 };
-                    await Octave.CreateNext(Octave);
+                    await Octave.CreateNext();
                 }
 
                 World.IsNext = true;

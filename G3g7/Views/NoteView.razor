@@ -1,8 +1,7 @@
-﻿@using Microsoft.AspNetCore.Components.Rendering
+﻿@inherits BaseView
+@using Microsoft.AspNetCore.Components.Rendering
 
 @code {
-    [CascadingParameter] public Options Options { get; set; }
-    [Parameter] public World World { get; set; }
     [Parameter] public Octave Octave { get; set; }
     [Parameter] public EventCallback VisibleChanged { get; set; }
 
