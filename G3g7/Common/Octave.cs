@@ -6,7 +6,7 @@ namespace G3g7.Common {
         private const int IdTwo = 2;
         private static Octave root;
         private static Storage storage;
-        private string id;
+        private readonly string id;
         private double begin;
         private double end;
         private bool isVisible;
