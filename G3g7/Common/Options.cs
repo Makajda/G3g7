@@ -53,7 +53,7 @@ namespace G3g7.Common {
                 if (cosmos != value && Cosmoses.Contains(value)) {
                     cosmos = value;
                     localStorage.SetItem(CosmosKey, cosmos);
-                    navigationManager.NavigateTo($"/{cosmos}");
+                    navigationManager.NavigateTo($"{cosmos}");
                 }
             }
         }
