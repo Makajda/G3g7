@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 
 namespace G3g7.Common {
-    internal class Octave {
+    public class Octave {
         private const int IdOne = 1;
         private const int IdTwo = 2;
         private static Octave root;

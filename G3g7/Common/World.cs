@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 
 namespace G3g7.Common {
-    internal class World {
+    public class World {
         internal int Level { get; set; }
         internal bool IsNext { get; set; }
         internal World Next { get; set; }

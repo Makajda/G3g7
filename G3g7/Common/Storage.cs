@@ -1,7 +1,7 @@
 ﻿using Blazored.LocalStorage;
 
 namespace G3g7.Common {
-    internal class Storage {
+    public class Storage {
         private const string FirstRunKey = "FirstRun";
         private readonly ISyncLocalStorageService localStorage;
         private readonly Options options;
@@ -31,7 +31,7 @@ namespace G3g7.Common {
             localStorage.SetItem(LegendKey(id), legend);
         }
 
-        private string VisibleKey(string id) => $"{id}-V";
+        private static string VisibleKey(string id) => $"{id}-V";
         private string LegendKey(string id) => $"{options.Cosmos}-{id}-L";
 
         private void SetDefault() {

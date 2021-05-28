@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace G3g7.Common {
-    internal class Options {
+    public class Options {
         private const string HideValueKey = "HideValue";
         private const string MonochromeKey = "Monochrome";
         private const string CosmosKey = "Cosmos";
