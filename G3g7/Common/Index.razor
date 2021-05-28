@@ -2,6 +2,7 @@
 @page "/{cosmos?}"
 
 @inject Blazored.LocalStorage.ISyncLocalStorageService localStorage
+@inject NavigationManager navigationManager
 
 <CascadingValue Value="options">
     <div class="page">
@@ -22,7 +23,7 @@
 
     protected override void OnInitialized() {
         base.OnInitialized();
-        options = new(localStorage, Cosmos);
+        options = new(localStorage, navigationManager, Cosmos);
         octave = new(new Storage(localStorage, options));
         world = new();
     }

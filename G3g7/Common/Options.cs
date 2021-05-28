@@ -1,5 +1,7 @@
 ﻿using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace G3g7.Common {
     public class Options {
@@ -7,30 +9,21 @@ namespace G3g7.Common {
         private const string MonochromeKey = "Monochrome";
         private const string CosmosKey = "Cosmos";
         private readonly ISyncLocalStorageService localStorage;
+        private readonly NavigationManager navigationManager;
         private bool isHideValue;
         private bool isMonochrome;
-        private int cosmos;
-        public Options(ISyncLocalStorageService localStorage, string inititalCosmos = null) {
+        private string cosmos = "Man";
+        public Options(ISyncLocalStorageService localStorage, NavigationManager navigationManager, string inititalCosmos = null) {
             this.localStorage = localStorage;
+            this.navigationManager = navigationManager;
             IsHideValue = localStorage.GetItem<bool>(HideValueKey);
             IsMonochrome = localStorage.GetItem<bool>(MonochromeKey);
 
-            var initialExist = false;
-            if (inititalCosmos is not null) {
-                var index = 0;
-                foreach (var c in Cosmoses) {
-                    if (c == inititalCosmos) {
-                        Cosmos = index;
-                        initialExist = true;
-                        break;
-                    }
-
-                    index++;
-                }
+            if (inititalCosmos is null) {
+                Cosmos = localStorage.GetItem<string>(CosmosKey);
             }
-
-            if (!initialExist) {
-                Cosmos = localStorage.GetItem<int>(CosmosKey);
+            else {
+                Cosmos = inititalCosmos;
             }
         }
 
@@ -54,12 +47,13 @@ namespace G3g7.Common {
             }
         }
 
-        internal int Cosmos {
+        internal string Cosmos {
             get => cosmos;
             set {
-                if (cosmos != value) {
+                if (cosmos != value && Cosmoses.Contains(value)) {
                     cosmos = value;
                     localStorage.SetItem(CosmosKey, cosmos);
+                    navigationManager.NavigateTo($"/{cosmos}");
                 }
             }
         }

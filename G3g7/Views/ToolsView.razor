@@ -11,9 +11,13 @@
 
 <button @onclick=OnHideValue>@(Options.IsHideValue ? "show frq" : "hide frq")</button>
 <button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null)
-        @onclick=OnIncValue>frq * 2</button>
+        @onclick=OnIncValue>
+    frq * 2
+</button>
 <button disabled=@(Options.IsHideValue ? "disabled" : null) style=@(Options.IsHideValue ? "text-decoration:line-through;" : null)
-        @onclick=OnDecValue>frq : 2</button>
+        @onclick=OnDecValue>
+    frq : 2
+</button>
 <button @onclick=OnMonochrome>@(Options.IsMonochrome ? "color on" : "color off")</button>
 
 @code {
@@ -39,19 +43,18 @@
         await OptionsChanged.InvokeAsync();
     }
 
-    private async Task OnCosmos(int id) {
-        Options.Cosmos = id;
+    private async Task OnCosmos(string cosmos) {
+        Options.Cosmos = cosmos;
         await Octave.ChangeCosmos();
         await OptionsChanged.InvokeAsync();
     }
 
     private void DivCosmoses(RenderTreeBuilder __builder) {
-        var cosmosId = 0;
         foreach (var cosmos in Options.Cosmoses) {
-            var z = cosmosId;
-            <button class="mainButton" style=@(z == Options.Cosmos ? "color:gold" : null)
-                    @onclick="async _ => await OnCosmos(z)">@cosmos</button>
-            cosmosId++;
+            <button class="mainButton" style=@(cosmos == Options.Cosmos ? "color:gold" : null)
+                    @onclick="async _ => await OnCosmos(cosmos)">
+                @cosmos
+            </button>
         }
     }
 }
