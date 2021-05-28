@@ -8,7 +8,7 @@ namespace G3g7.Common {
         public Storage(ISyncLocalStorageService localStorage, Options options) {
             this.localStorage = localStorage;
             this.options = options;
-            localStorage.Clear();
+            //localStorage.Clear();
             if (!localStorage.ContainKey(FirstRunKey)) {
                 localStorage.SetItem(FirstRunKey, false);
                 SetDefault();
