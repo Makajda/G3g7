@@ -1,4 +1,6 @@
 ﻿@page "/"
+@page "/{cosmos?}"
+
 @inject Blazored.LocalStorage.ISyncLocalStorageService localStorage
 
 <CascadingValue Value="options">
@@ -16,10 +18,11 @@
     private Options options;
     private World world;
     private Octave octave;
+    [Parameter] public string Cosmos { get; set; }
 
     protected override void OnInitialized() {
         base.OnInitialized();
-        options = new(localStorage);
+        options = new(localStorage, Cosmos);
         octave = new(new Storage(localStorage, options));
         world = new();
     }

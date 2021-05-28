@@ -10,11 +10,28 @@ namespace G3g7.Common {
         private bool isHideValue;
         private bool isMonochrome;
         private int cosmos;
-        public Options(ISyncLocalStorageService localStorage) {
+        public Options(ISyncLocalStorageService localStorage, string inititalCosmos = null) {
             this.localStorage = localStorage;
             IsHideValue = localStorage.GetItem<bool>(HideValueKey);
             IsMonochrome = localStorage.GetItem<bool>(MonochromeKey);
-            Cosmos = localStorage.GetItem<int>(CosmosKey);
+
+            var initialExist = false;
+            if (inititalCosmos is not null) {
+                var index = 0;
+                foreach (var c in Cosmoses) {
+                    if (c == inititalCosmos) {
+                        Cosmos = index;
+                        initialExist = true;
+                        break;
+                    }
+
+                    index++;
+                }
+            }
+
+            if (!initialExist) {
+                Cosmos = localStorage.GetItem<int>(CosmosKey);
+            }
         }
 
         internal bool IsHideValue {
@@ -47,7 +64,7 @@ namespace G3g7.Common {
             }
         }
 
-        internal IEnumerable<string> Cosmoses { get; } = new string[] {
+        internal static IEnumerable<string> Cosmoses { get; } = new string[] {
             "One",
             "Holy",
             "Galaxy",
