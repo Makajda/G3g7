@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 
 namespace G3g7.Common {
-    public class World {
-        public int Level { get; set; }
-        public bool IsNext { get; set; }
-        public World Next { get; set; }
+    internal class World {
+        internal int Level { get; set; }
+        internal bool IsNext { get; set; }
+        internal World Next { get; set; }
 
         internal async Task CreateWorld() {
             if (IsNext) {

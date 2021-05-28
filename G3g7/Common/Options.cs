@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace G3g7.Common {
-    public class Options {
+    internal class Options {
         private const string HideValueKey = "HideValue";
         private const string MonochromeKey = "Monochrome";
         private const string CosmosKey = "Cosmos";
@@ -17,7 +17,7 @@ namespace G3g7.Common {
             Cosmos = localStorage.GetItem<int>(CosmosKey);
         }
 
-        public bool IsHideValue {
+        internal bool IsHideValue {
             get => isHideValue;
             set {
                 if (isHideValue != value) {
@@ -27,7 +27,7 @@ namespace G3g7.Common {
             }
         }
 
-        public bool IsMonochrome {
+        internal bool IsMonochrome {
             get => isMonochrome;
             set {
                 if (isMonochrome != value) {
@@ -37,7 +37,7 @@ namespace G3g7.Common {
             }
         }
 
-        public int Cosmos {
+        internal int Cosmos {
             get => cosmos;
             set {
                 if (cosmos != value) {
@@ -47,7 +47,7 @@ namespace G3g7.Common {
             }
         }
 
-        public IEnumerable<string> Cosmoses { get; } = new string[] {
+        internal IEnumerable<string> Cosmoses { get; } = new string[] {
             "One",
             "Holy",
             "Galaxy",

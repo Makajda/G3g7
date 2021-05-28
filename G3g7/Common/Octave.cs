@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 
 namespace G3g7.Common {
-    public class Octave {
+    internal class Octave {
         private const int IdOne = 1;
         private const int IdTwo = 2;
         private static Octave root;
@@ -36,7 +36,7 @@ namespace G3g7.Common {
             }
         }
 
-        public bool IsVisible {
+        internal bool IsVisible {
             get => isVisible;
             set {
                 if (isVisible != value) {
@@ -46,7 +46,7 @@ namespace G3g7.Common {
             }
         }
 
-        public string Legend {
+        internal string Legend {
             get => legend;
             set {
                 if (legend != value) {
@@ -56,17 +56,17 @@ namespace G3g7.Common {
             }
         }
 
-        public Octave NextOne { get; set; }
-        public Octave NextTwo { get; set; }
-        public Octave Parent { get; }
+        internal Octave NextOne { get; set; }
+        internal Octave NextTwo { get; set; }
+        internal Octave Parent { get; }
 
-        public double Do => begin;
-        public double Ti => (7 * begin + end) / 8d;
-        public double La => (2 * begin + end) / 3d;
-        public double So => (begin + end) / 2d;
-        public double Fa => (begin + 2 * end) / 3d;
-        public double Mi => (begin + 3 * end) / 4d;
-        public double Re => (begin + 7 * end) / 8d;
+        internal double Do => begin;
+        internal double Ti => (7 * begin + end) / 8d;
+        internal double La => (2 * begin + end) / 3d;
+        internal double So => (begin + end) / 2d;
+        internal double Fa => (begin + 2 * end) / 3d;
+        internal double Mi => (begin + 3 * end) / 4d;
+        internal double Re => (begin + 7 * end) / 8d;
 
         internal static async Task Recalc(double k) => await Recalc(root, k);
         internal static async Task CreateNext() => await CreateNext(root);
