@@ -19,6 +19,7 @@
     frq : 2
 </button>
 <button @onclick=OnMonochrome>@(Options.IsMonochrome ? "color on" : "color off")</button>
+<button @onclick=OnClearStorage>restore</button>
 
 @code {
     [Parameter] public EventCallback OptionsChanged { get; set; }
@@ -40,6 +41,11 @@
 
     private async Task OnMonochrome() {
         Options.IsMonochrome = !Options.IsMonochrome;
+        await OptionsChanged.InvokeAsync();
+    }
+
+    private async Task OnClearStorage() {
+        await Octave.Restore();
         await OptionsChanged.InvokeAsync();
     }
 

@@ -71,6 +71,10 @@ namespace G3g7.Common {
         internal static async Task Recalc(double k) => await Recalc(root, k);
         internal static async Task CreateNext() => await CreateNext(root);
         internal static async Task ChangeCosmos() => await ChangeCosmos(root);
+        internal static async Task Restore() {
+            storage.Clear();
+            await Restore(root);
+        }
 
         private static async Task Recalc(Octave octave, double k) {
             octave.begin *= k;
@@ -98,6 +102,15 @@ namespace G3g7.Common {
             if (octave.NextOne is not null) {
                 await ChangeCosmos(octave.NextOne);
                 await ChangeCosmos(octave.NextTwo);
+            }
+        }
+
+        private static async Task Restore(Octave octave) {
+            octave.IsVisible = storage.GetVisible(octave.id);
+            octave.Legend = storage.GetLegend(octave.id);
+            if (octave.NextOne is not null) {
+                await Restore(octave.NextOne);
+                await Restore(octave.NextTwo);
             }
         }
     }

@@ -8,11 +8,12 @@ namespace G3g7.Common {
         public Storage(ISyncLocalStorageService localStorage, Options options) {
             this.localStorage = localStorage;
             this.options = options;
-            //localStorage.Clear();
-            if (!localStorage.ContainKey(FirstRunKey)) {
-                localStorage.SetItem(FirstRunKey, false);
-                SetDefault();
-            }
+            SetDefault();
+        }
+
+        internal void Clear() {
+            localStorage.Clear();
+            SetDefault();
         }
 
         internal bool GetVisible(string id) {
@@ -20,23 +21,36 @@ namespace G3g7.Common {
             return !localStorage.ContainKey(key) || localStorage.GetItem<bool>(key);
         }
 
-        internal string GetLegend(string id) {
-            return localStorage.GetItem<string>(LegendKey(id));
-        }
+        internal string GetLegend(string id) => localStorage.GetItem<string>(LegendKey(id));
 
         internal void SetVisible(string id, bool isVisible) {
-            localStorage.SetItem(VisibleKey(id), isVisible);
+            if (isVisible) {
+                localStorage.RemoveItem(VisibleKey(id));
+            }
+            else {
+                localStorage.SetItem(VisibleKey(id), isVisible);
+            }
         }
 
         internal void SetLegend(string id, string legend) {
-            localStorage.SetItem(LegendKey(id), legend);
+            if (legend is null) {
+                localStorage.RemoveItem(LegendKey(id));
+            }
+            else {
+                localStorage.SetItem(LegendKey(id), legend);
+            }
         }
 
         private static string VisibleKey(string id) => $"{id}-V";
         private string LegendKey(string id) => $"{options.Cosmos}-{id}-L";
 
         private void SetDefault() {
-            // cosmos-[octave]-V
+            if (localStorage.ContainKey(FirstRunKey)) {
+                return; //-------------------------return
+            }
+
+            localStorage.SetItem(FirstRunKey, false);
+
             localStorage.SetItem("One-0-L", "One");
             localStorage.SetItem("Holy-0-L", "Holy");
             localStorage.SetItem("Galaxy-0-L", "Galaxy");
