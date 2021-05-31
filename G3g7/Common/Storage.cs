@@ -8,7 +8,9 @@ namespace G3g7.Common {
         public Storage(ISyncLocalStorageService localStorage, Options options) {
             this.localStorage = localStorage;
             this.options = options;
-            SetDefault();
+            if (!localStorage.ContainKey(FirstRunKey)) {
+                SetDefault();
+            }
         }
 
         internal void Clear() {
@@ -45,10 +47,6 @@ namespace G3g7.Common {
         private string LegendKey(string id) => $"{options.Cosmos}-{id}-L";
 
         private void SetDefault() {
-            if (localStorage.ContainKey(FirstRunKey)) {
-                return; //-------------------------return
-            }
-
             localStorage.SetItem(FirstRunKey, false);
 
             localStorage.SetItem("One-0-L", "One");
@@ -58,6 +56,17 @@ namespace G3g7.Common {
             localStorage.SetItem("Planet-0-L", "Planet");
             localStorage.SetItem("Man-0-L", "Man");
             localStorage.SetItem("Atom-0-L", "Atom");
+
+            localStorage.SetItem("One-0-1-L", "Sun");
+            localStorage.SetItem("One-0-2-L", "Planet");
+            localStorage.SetItem("One-0-2-1-L", "Moon");
+            localStorage.SetItem("One-0-2-2-L", "Anulios");
+
+            localStorage.SetItem("Atom-0-L", "Atom");
+            localStorage.SetItem("Atom-0-1-L", "Nucleus");
+            localStorage.SetItem("Atom-0-2-L", "Electrons");
+            localStorage.SetItem("Atom-0-1-1-L", "Protons");
+            localStorage.SetItem("Atom-0-1-2-L", "Neutrons");
 
             localStorage.SetItem("Man-0-1-L", "Higher Centers");
             localStorage.SetItem("Man-0-1-1-L", "Higher Mental Center");
